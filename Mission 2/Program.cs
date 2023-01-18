@@ -26,17 +26,20 @@ class DiceSimulator
         Console.WriteLine("Total number of rolls = " + numRolls + "."); // Prints the total number of rolls
 
         // print histogram
+        int totalAsterisks = 0;
         for (int i = 2; i <= 12; i++)
         {
             int percentage = (int)((double)rollTotals[i] / numRolls * 100); // Calculates the percentage of the total rolls for this total
             Console.Write(i + ": "); // Prints the total roll
-            for (int j = 0; j < percentage; j++)
+            int asterisks = (int)Math.Round((double)percentage / 100 * numRolls);
+            totalAsterisks += asterisks;
+            for (int j = 0; j < asterisks; j++)
             {
                 Console.Write("*"); // Prints an asterisk for every 1% of rolls for this total
             }
             Console.WriteLine(); // Prints a new line for the next total
         }
-
+        Console.WriteLine("Total Asterisks Printed :" + totalAsterisks);
         Console.WriteLine("\nThank you for using the dice throwing simulator. Goodbye!"); // Prints a goodbye message
     }
 }
